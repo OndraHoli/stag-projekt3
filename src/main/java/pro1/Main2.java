@@ -13,6 +13,7 @@ public class Main2 {
         String json = Api.getActionsByDepartment(department,year);
         ActionsList actions= new Gson().fromJson(json, ActionsList.class);
 
-        return -1; // TODO 2.1: Vrať nejvyšší dosažený počet přihlášených studentů na jedné akci
+        return actions.items.stream().mapToInt(a -> a.personsCount).max().getAsInt();
+        // TODO 2.1: Vrať nejvyšší dosažený počet přihlášených studentů na jedné akci
     }
 }
